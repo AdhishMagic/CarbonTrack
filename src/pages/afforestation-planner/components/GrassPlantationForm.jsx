@@ -170,6 +170,10 @@ const GrassPlantationForm = ({ onDataChange, data }) => {
             value={formData?.establishmentRate}
             onChange={(e) => handleInputChange('establishmentRate', e?.target?.value)}
             className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer slider"
+            aria-label="Expected establishment rate"
+            aria-valuemin={70}
+            aria-valuemax={98}
+            aria-valuenow={Number(formData?.establishmentRate) || 0}
           />
           <div className="flex justify-between text-xs font-caption text-muted-foreground">
             <span>70%</span>

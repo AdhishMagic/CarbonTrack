@@ -134,6 +134,10 @@ const TreePlantationForm = ({ onDataChange, data }) => {
             value={formData?.survivalRate}
             onChange={(e) => handleInputChange('survivalRate', e?.target?.value)}
             className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer slider"
+            aria-label="Expected survival rate"
+            aria-valuemin={60}
+            aria-valuemax={95}
+            aria-valuenow={Number(formData?.survivalRate) || 0}
           />
           <div className="flex justify-between text-xs font-caption text-muted-foreground">
             <span>60%</span>

@@ -1,5 +1,5 @@
 // components/ui/Select.jsx - Shadcn style Select
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown, Check, Search, X } from "lucide-react";
 import { cn } from "../../utils/cn";
 import Button from "./Button";
@@ -28,9 +28,12 @@ const Select = React.forwardRef(({
 }, ref) => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
+    const dropdownRef = useRef(null);
 
     // Generate unique ID if not provided
     const selectId = id || `select-${Math.random()?.toString(36)?.substr(2, 9)}`;
+    const listboxId = `${selectId}-listbox`;
+    const labelId = label ? `${selectId}-label` : undefined;
 
     // Filter options based on search
     const filteredOptions = searchable && searchTerm
@@ -98,10 +101,36 @@ const Select = React.forwardRef(({
 
     const hasValue = multiple ? value?.length > 0 : value !== undefined && value !== '';
 
+    // Close on outside click and on Escape key
+    useEffect(() => {
+        if (!isOpen) return;
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+                onOpenChange?.(false);
+                setSearchTerm("");
+            }
+        };
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                setIsOpen(false);
+                onOpenChange?.(false);
+                setSearchTerm("");
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, onOpenChange]);
+
     return (
         <div className={cn("relative", className)}>
             {label && (
                 <label
+                    id={labelId}
                     htmlFor={selectId}
                     className={cn(
                         "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-2 block",
@@ -126,6 +155,8 @@ const Select = React.forwardRef(({
                     disabled={disabled}
                     aria-expanded={isOpen}
                     aria-haspopup="listbox"
+                    aria-controls={isOpen ? listboxId : undefined}
+                    aria-labelledby={labelId}
                     {...props}
                 >
                     <span className="truncate">{getSelectedDisplay()}</span>
@@ -173,7 +204,11 @@ const Select = React.forwardRef(({
 
                 {/* Dropdown */}
                 {isOpen && (
-                    <div className="absolute z-50 w-full mt-1 bg-white text-black border border-border rounded-md shadow-md">
+                    <div
+                        ref={dropdownRef}
+                        className="absolute z-50 w-full mt-1 bg-white text-black border border-border rounded-md shadow-md"
+                        role="presentation"
+                    >
                         {searchable && (
                             <div className="p-2 border-b">
                                 <div className="relative">
@@ -188,7 +223,12 @@ const Select = React.forwardRef(({
                             </div>
                         )}
 
-                        <div className="py-1 max-h-60 overflow-auto">
+                        <div
+                            id={listboxId}
+                            role="listbox"
+                            aria-labelledby={labelId}
+                            className="py-1 max-h-60 overflow-auto"
+                        >
                             {filteredOptions?.length === 0 ? (
                                 <div className="px-3 py-2 text-sm text-muted-foreground">
                                     {searchTerm ? 'No options found' : 'No options available'}
@@ -202,6 +242,8 @@ const Select = React.forwardRef(({
                                             isSelected(option?.value) && "bg-primary text-primary-foreground",
                                             option?.disabled && "pointer-events-none opacity-50"
                                         )}
+                                        role="option"
+                                        aria-selected={isSelected(option?.value)}
                                         onClick={() => !option?.disabled && handleOptionSelect(option)}
                                     >
                                         <span className="flex-1">{option?.label}</span>
