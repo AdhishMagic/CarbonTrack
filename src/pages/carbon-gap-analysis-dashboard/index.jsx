@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import Header from '../../components/ui/Header';
+import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import SummaryCard from './components/SummaryCard';
 import EmissionVsOffsetChart from './components/EmissionVsOffsetChart';
 import TrendChart from './components/TrendChart';
