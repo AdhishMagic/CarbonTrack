@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/ui/Header';
-import Breadcrumb from '../../components/ui/Breadcrumb';
 import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import CalculationForm from './components/CalculationForm';
 import EmissionSummary from './components/EmissionSummary';
@@ -106,7 +105,7 @@ const EmissionCalculator = () => {
       <Header />
       <main className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Breadcrumb />
+          {/* Breadcrumb removed */}
           <ProgressIndicator />
           
           {/* Page Header */}
