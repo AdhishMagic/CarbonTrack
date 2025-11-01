@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/ui/Header';
 import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import SummaryCard from './components/SummaryCard';
 import EmissionVsOffsetChart from './components/EmissionVsOffsetChart';
@@ -169,7 +168,6 @@ const CarbonGapAnalysisDashboard = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background">
-        <Header />
         <main className="pt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center justify-center h-96">
@@ -186,7 +184,6 @@ const CarbonGapAnalysisDashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       <main className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Breadcrumb removed */}

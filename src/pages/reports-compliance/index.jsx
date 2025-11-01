@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../../components/ui/Header';
 import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import ReportTemplatesSidebar from './components/ReportTemplatesSidebar';
 import ReportPreview from './components/ReportPreview';
@@ -42,7 +41,7 @@ const ReportsCompliance = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+  {/* Header removed */}
       
       <main className="pt-16">
         <div className="container mx-auto px-4 lg:px-6 py-6">

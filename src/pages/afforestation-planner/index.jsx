@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../../components/ui/Header';
 import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import TreePlantationForm from './components/TreePlantationForm';
 import GrassPlantationForm from './components/GrassPlantationForm';
@@ -37,7 +36,7 @@ const AfforestationPlanner = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+  {/* Header removed */}
       <main className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Breadcrumb removed */}
