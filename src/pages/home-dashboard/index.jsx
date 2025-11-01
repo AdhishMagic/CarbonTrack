@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../../components/ui/Header';
 import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import HeroSection from './components/HeroSection';
 import MetricsSummary from './components/MetricsSummary';
@@ -8,7 +9,7 @@ import ActivityFeed from './components/ActivityFeed';
 const HomeDashboard = () => {
   return (
     <div className="min-h-screen bg-background">
-  {/* Header removed */}
+      <Header />
       <main className="pt-16">
         <div className="max-w-7xl mx-auto px-4 lg:px-6 py-6">
           {/* Breadcrumb removed */}

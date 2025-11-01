@@ -41,7 +41,7 @@ const ReportsCompliance = () => {
 
   return (
     <div className="min-h-screen bg-background">
-  {/* Header removed */}
+      <Header />
       
       <main className="pt-16">
         <div className="container mx-auto px-4 lg:px-6 py-6">
