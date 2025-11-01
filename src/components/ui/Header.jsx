@@ -1,22 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-  const location = useLocation();
-
-  const navigationItems = [
-    { label: 'Home', path: '/home-dashboard', icon: 'Home', tooltip: 'Dashboard overview and metrics' },
-    { label: 'Calculate', path: '/emission-calculator', icon: 'Calculator', tooltip: 'Emission calculation tools' },
-    { label: 'Plan', path: '/afforestation-planner', icon: 'TreePine', tooltip: 'Afforestation strategy planning' },
-    { label: 'Analyze', path: '/carbon-gap-analysis-dashboard', icon: 'BarChart3', tooltip: 'Carbon gap analysis dashboard' },
-    { label: 'Report', path: '/reports-compliance', icon: 'FileText', tooltip: 'Compliance reports and documentation' }
-  ];
-
-  const isActiveRoute = (path) => location.pathname === path;
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const toggleUserMenu = () => setIsUserMenuOpen(!isUserMenuOpen);
@@ -44,30 +34,12 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-1">
-          {navigationItems?.map((item) => (
-            <Link
-              key={item?.path}
-              to={item?.path}
-              className={`group relative flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-body font-medium transition-all duration-150 ease-out-custom ${
-                isActiveRoute(item?.path)
-                  ? 'bg-primary text-primary-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-              }`}
-              title={item?.tooltip}
-            >
-              <Icon name={item?.icon} size={16} />
-              <span>{item?.label}</span>
-              {isActiveRoute(item?.path) && (
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary-foreground rounded-full" />
-              )}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop Navigation removed */}
 
         {/* User Context Panel & Mobile Menu Button */}
         <div className="flex items-center space-x-2">
+          {/* Theme Toggle */}
+          <ThemeToggle />
           {/* User Context Panel - Desktop */}
           <div className="hidden lg:block relative">
             <Button
@@ -147,27 +119,7 @@ const Header = () => {
                 </div>
               </div>
 
-              {/* Navigation Items - Mobile */}
-              <nav className="space-y-2">
-                {navigationItems?.map((item) => (
-                  <Link
-                    key={item?.path}
-                    to={item?.path}
-                    onClick={toggleMobileMenu}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-base font-body font-medium transition-all duration-150 ease-out-custom ${
-                      isActiveRoute(item?.path)
-                        ? 'bg-primary text-primary-foreground'
-                        : 'text-foreground hover:bg-muted'
-                    }`}
-                  >
-                    <Icon name={item?.icon} size={20} />
-                    <div>
-                      <span>{item?.label}</span>
-                      <p className="text-sm font-caption opacity-75">{item?.tooltip}</p>
-                    </div>
-                  </Link>
-                ))}
-              </nav>
+              {/* Navigation Items - Mobile removed */}
 
               {/* User Actions - Mobile */}
               <div className="mt-8 pt-6 border-t border-border space-y-2">

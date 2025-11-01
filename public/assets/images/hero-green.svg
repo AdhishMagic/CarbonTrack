@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Green sustainable landscape illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8F7EE"/>
+      <stop offset="100%" stop-color="#F5FFF8"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+    <linearGradient id="hill1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#16A34A"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="hill2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0E7A3E"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#A7F3D0"/>
+      <stop offset="100%" stop-color="#6EE7B7"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0b3d22" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="1200" height="800" fill="url(#bg)"/>
+
+  <!-- Sun -->
+  <circle cx="1020" cy="120" r="80" fill="url(#sun)" opacity="0.9"/>
+
+  <!-- Distant hills -->
+  <path d="M0 420 C 200 360, 320 360, 520 420 C 720 480, 880 420, 1200 440 L 1200 800 L 0 800 Z" fill="url(#hill1)" opacity="0.65"/>
+  <path d="M0 500 C 160 450, 360 500, 560 520 C 780 540, 940 500, 1200 560 L 1200 800 L 0 800 Z" fill="url(#hill2)" opacity="0.8"/>
+
+  <!-- Water/valley -->
+  <path d="M0 620 C 220 600, 360 640, 600 630 C 860 620, 980 640, 1200 620 L 1200 800 L 0 800 Z" fill="url(#water)" opacity="0.5"/>
+
+  <!-- Foreground hill -->
+  <path d="M0 560 C 240 520, 420 600, 680 590 C 920 580, 1040 600, 1200 590 L 1200 800 L 0 800 Z" fill="#14532D"/>
+
+  <!-- Trees group -->
+  <g filter="url(#shadow)">
+    <!-- Tree template: trunk + three tiers -->
+    <g transform="translate(180,540)">
+      <rect x="-6" y="30" width="12" height="40" rx="3" fill="#065F46"/>
+      <polygon points="0,0 -28,22 28,22" fill="#047857"/>
+      <polygon points="0,16 -32,38 32,38" fill="#059669"/>
+      <polygon points="0,34 -36,56 36,56" fill="#10B981"/>
+    </g>
+    <g transform="translate(260,560) scale(0.9)">
+      <rect x="-6" y="30" width="12" height="40" rx="3" fill="#065F46"/>
+      <polygon points="0,0 -28,22 28,22" fill="#047857"/>
+      <polygon points="0,16 -32,38 32,38" fill="#059669"/>
+      <polygon points="0,34 -36,56 36,56" fill="#10B981"/>
+    </g>
+    <g transform="translate(340,545) scale(1.1)">
+      <rect x="-6" y="30" width="12" height="40" rx="3" fill="#065F46"/>
+      <polygon points="0,0 -28,22 28,22" fill="#047857"/>
+      <polygon points="0,16 -32,38 32,38" fill="#059669"/>
+      <polygon points="0,34 -36,56 36,56" fill="#10B981"/>
+    </g>
+    <g transform="translate(860,560) scale(1.1)">
+      <rect x="-6" y="30" width="12" height="40" rx="3" fill="#065F46"/>
+      <polygon points="0,0 -28,22 28,22" fill="#047857"/>
+      <polygon points="0,16 -32,38 32,38" fill="#059669"/>
+      <polygon points="0,34 -36,56 36,56" fill="#10B981"/>
+    </g>
+    <g transform="translate(960,545)">
+      <rect x="-6" y="30" width="12" height="40" rx="3" fill="#065F46"/>
+      <polygon points="0,0 -28,22 28,22" fill="#047857"/>
+      <polygon points="0,16 -32,38 32,38" fill="#059669"/>
+      <polygon points="0,34 -36,56 36,56" fill="#10B981"/>
+    </g>
+  </g>
+
+  <!-- Decorative wind lines -->
+  <g stroke="#86EFAC" stroke-width="3" stroke-linecap="round" opacity="0.6">
+    <path d="M120 160 C 220 140, 320 180, 420 160"/>
+    <path d="M160 200 C 300 190, 380 210, 520 200"/>
+    <path d="M720 160 C 840 150, 960 180, 1080 170"/>
+  </g>
+</svg>

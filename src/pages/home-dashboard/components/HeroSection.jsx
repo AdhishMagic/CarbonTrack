@@ -6,8 +6,8 @@ import Button from '../../../components/ui/Button';
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-gradient-to-br from-primary/5 via-background to-accent/5 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent" />
+    <section className="relative bg-green-gradient-soft overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none" />
       
       <div className="relative max-w-7xl mx-auto px-4 lg:px-6 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -92,11 +92,13 @@ const HeroSection = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Sustainable coal mining with green technology and environmental conservation"
-                className="w-full h-96 lg:h-[500px] object-cover"
+                src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80"
+                alt="Sunlight streaming through dense green forest canopy"
+                className="w-full h-96 lg:h-[500px] object-cover filter saturate-[1.15] contrast-[1.05] brightness-[0.97] hue-rotate-[-8deg]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+              {/* Theme-aligned overlays: subtle green tint + gradient for readability */}
+              <div className="absolute inset-0 bg-accent/15 mix-blend-multiply dark:bg-accent/25" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/35 to-transparent dark:from-primary/50" />
             </div>
             
             {/* Floating Cards */}

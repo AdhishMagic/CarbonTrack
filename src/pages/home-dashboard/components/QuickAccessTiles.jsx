@@ -45,6 +45,17 @@ const QuickAccessTiles = () => {
       features: ["Gap analysis", "Trend visualization", "Compliance tracking"],
       status: "active"
     }
+    ,
+    {
+      id: 5,
+      title: "Data Workbench",
+      description: "Upload CSV/Excel, map columns, and run Calculate → Plan → Analyze → Report on your data",
+      icon: "Database",
+      route: "/data-workbench",
+      color: "accent",
+      features: ["CSV/XLSX upload", "Column mapping", "Charts & report"],
+      status: "active"
+    }
   ];
 
   const getColorClasses = (color) => {

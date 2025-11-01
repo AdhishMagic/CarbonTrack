@@ -8,6 +8,7 @@ import ReportsCompliance from './pages/reports-compliance';
 import AfforestationPlanner from './pages/afforestation-planner';
 import EmissionCalculator from './pages/emission-calculator';
 import CarbonGapAnalysisDashboard from './pages/carbon-gap-analysis-dashboard';
+import DataWorkbench from './pages/data-workbench';
 
 const Routes = () => {
   return (
@@ -22,6 +23,7 @@ const Routes = () => {
         <Route path="/afforestation-planner" element={<AfforestationPlanner />} />
         <Route path="/emission-calculator" element={<EmissionCalculator />} />
         <Route path="/carbon-gap-analysis-dashboard" element={<CarbonGapAnalysisDashboard />} />
+  <Route path="/data-workbench" element={<DataWorkbench />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>
