@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../../components/ui/Header';
 import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import CalculationForm from './components/CalculationForm';
 import EmissionSummary from './components/EmissionSummary';

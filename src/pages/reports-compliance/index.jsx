@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../../components/ui/Header';
 import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import ReportTemplatesSidebar from './components/ReportTemplatesSidebar';
 import ReportPreview from './components/ReportPreview';
