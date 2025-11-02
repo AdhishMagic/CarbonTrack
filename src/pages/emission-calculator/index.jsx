@@ -4,8 +4,10 @@ import ProgressIndicator from '../../components/ui/ProgressIndicator';
 import CalculationForm from './components/CalculationForm';
 import EmissionSummary from './components/EmissionSummary';
 import Icon from '../../components/AppIcon';
+import { useAuth } from '../../context/AuthContext';
 
 const EmissionCalculator = () => {
+  const { requireAuth } = useAuth();
   const [activities, setActivities] = useState([
     {
       id: 1,
@@ -28,6 +30,9 @@ const EmissionCalculator = () => {
   };
 
   const handleAddActivity = () => {
+    // Require authentication for adding activities
+    if (!requireAuth()) return;
+    
     const newActivity = {
       id: generateId(),
       activityType: '',
@@ -39,6 +44,9 @@ const EmissionCalculator = () => {
   };
 
   const handleRemoveActivity = (index) => {
+    // Require authentication for removing activities
+    if (!requireAuth()) return;
+    
     if (activities?.length > 1) {
       const newActivities = activities?.filter((_, i) => i !== index);
       setActivities(newActivities);
@@ -46,6 +54,9 @@ const EmissionCalculator = () => {
   };
 
   const handleCalculate = async () => {
+    // Require authentication for calculations
+    if (!requireAuth()) return;
+    
     setIsCalculating(true);
     
     // Simulate calculation delay for better UX

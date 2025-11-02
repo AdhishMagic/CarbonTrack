@@ -3,6 +3,7 @@ import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
 import { parseFile } from '../utils/parseFile';
 import { useDataWorkbench } from '../context';
+import { useAuth } from '../../../context/AuthContext';
 
 function guessMappings(columns = []) {
   const cols = columns.map(c => ({ raw: c, key: String(c).toLowerCase() }));
@@ -19,12 +20,16 @@ function guessMappings(columns = []) {
 
 const UploadPanel = ({ onContinue }) => {
   const { dataset, setDataset, setMappings } = useDataWorkbench();
+  const { requireAuth } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [selected, setSelected] = useState(null);
   const inputRef = useRef(null);
 
   const handleFile = async (file) => {
+    // Require authentication for file uploads
+    if (!requireAuth()) return;
+    
     if (!file) return;
     setError('');
     setLoading(true);
@@ -45,7 +50,11 @@ const UploadPanel = ({ onContinue }) => {
   };
 
   const onFileChange = (e) => handleFile(e.target.files?.[0]);
-  const pickFile = () => inputRef.current?.click();
+  const pickFile = () => {
+    // Require authentication before opening file picker
+    if (!requireAuth()) return;
+    inputRef.current?.click();
+  };
   const fileMeta = useMemo(() => {
     if (!selected) return '';
     const kb = Math.round((selected.size || 0) / 102.4) / 10; // one decimal

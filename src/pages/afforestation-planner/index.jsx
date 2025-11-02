@@ -6,8 +6,10 @@ import GrassPlantationForm from './components/GrassPlantationForm';
 import OffsetCalculationSidebar from './components/OffsetCalculationSidebar';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
+import { useAuth } from '../../context/AuthContext';
 
 const AfforestationPlanner = () => {
+  const { requireAuth } = useAuth();
   const [activeTab, setActiveTab] = useState('trees');
   const [treeData, setTreeData] = useState({});
   const [grassData, setGrassData] = useState({});
@@ -28,10 +30,14 @@ const AfforestationPlanner = () => {
   ];
 
   const handleTreeDataChange = (data) => {
+    // Require authentication for updating data
+    if (!requireAuth()) return;
     setTreeData(data);
   };
 
   const handleGrassDataChange = (data) => {
+    // Require authentication for updating data
+    if (!requireAuth()) return;
     setGrassData(data);
   };
 
