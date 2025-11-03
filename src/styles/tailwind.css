@@ -28,9 +28,9 @@
     --color-muted: #F9FAFB; /* gray-50 */
     --color-muted-foreground: #6B7280; /* gray-500 */
     
-    /* Primary Colors */
-    --color-primary: #2D5016; /* green-800 */
-    --color-primary-foreground: #FFFFFF; /* white */
+  /* Primary Colors */
+  --color-primary: #2D5016; /* green-800 */
+  --color-primary-foreground: #000000; /* black for better contrast on green */
     
     /* Secondary Colors */
     --color-secondary: #8B4513; /* amber-800 */
@@ -38,11 +38,11 @@
     
   /* Accent Colors (green theme) */
   --color-accent: #22C55E; /* green-500 */
-  --color-accent-foreground: #FFFFFF; /* white */
+  --color-accent-foreground: #000000; /* black text on green */
     
-    /* Success Colors */
-    --color-success: #059669; /* emerald-600 */
-    --color-success-foreground: #FFFFFF; /* white */
+  /* Success Colors */
+  --color-success: #059669; /* emerald-600 */
+  --color-success-foreground: #000000; /* black text on green */
     
     /* Warning Colors */
     --color-warning: #D97706; /* amber-600 */
@@ -107,6 +107,11 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
+  /* Global scale increase to ~110% for all REM-based sizes */
+  html {
+    font-size: 110%;
+  }
+
   /* Themed text selection colors */
   ::selection {
     background: rgba(34, 197, 94, 0.28); /* green-500 @ ~28% for light */
@@ -157,4 +162,63 @@
   .font-data {
     font-family: 'JetBrains Mono', monospace;
   }
+
+  /* Reveal on scroll utilities */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-in-view {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Header nav blink animation */
+@layer components {
+  @keyframes navBlink {
+    0%, 100% { opacity: 0.10; }
+    50% { opacity: 0.24; }
+  }
+
+  .nav-blink {
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-blink::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-accent);
+    border-radius: inherit;
+    opacity: 0.10;
+    animation: navBlink 1.8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0; /* above background, below content */
+  }
+  .nav-blink:hover::before {
+    animation-play-state: paused;
+    opacity: 0;
+  }
+  .nav-blink:focus-visible::before {
+    animation-play-state: paused;
+  }
+
+  /* Staggered delays for train effect */
+  .nav-blink-delay-0::before { animation-delay: 0s; }
+  .nav-blink-delay-1::before { animation-delay: 0.2s; }
+  .nav-blink-delay-2::before { animation-delay: 0.4s; }
+  .nav-blink-delay-3::before { animation-delay: 0.6s; }
+  .nav-blink-delay-4::before { animation-delay: 0.8s; }
 }

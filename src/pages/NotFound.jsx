@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/ui/Header';
 import Button from 'components/ui/Button';
 import Icon from 'components/AppIcon';
 
@@ -11,7 +12,9 @@ const NotFound = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
+    <>
+      <Header />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
       <div className="text-center max-w-md">
         <div className="flex justify-center mb-6">
           <div className="relative">
@@ -45,6 +48,7 @@ const NotFound = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

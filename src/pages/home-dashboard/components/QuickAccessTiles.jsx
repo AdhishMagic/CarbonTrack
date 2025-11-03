@@ -64,13 +64,13 @@ const QuickAccessTiles = () => {
         bg: "bg-primary/10",
         border: "border-primary/20",
         icon: "text-primary",
-        button: "primary"
+        button: "default"
       },
       success: {
         bg: "bg-success/10",
         border: "border-success/20",
         icon: "text-success",
-        button: "success"
+        button: "default"
       },
       accent: {
         bg: "bg-accent/10",
@@ -82,7 +82,7 @@ const QuickAccessTiles = () => {
         bg: "bg-warning/10",
         border: "border-warning/20",
         icon: "text-warning",
-        button: "warning"
+        button: "default"
       }
     };
     return colorMap?.[color] || colorMap?.primary;
@@ -98,7 +98,7 @@ const QuickAccessTiles = () => {
           Access comprehensive tools for emission tracking, afforestation planning, and carbon neutrality analysis
         </p>
       </div>
-      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+  <div className="grid sm:grid-cols-2 gap-6">
         {tiles?.map((tile) => {
           const colors = getColorClasses(tile?.color);
 

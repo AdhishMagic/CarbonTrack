@@ -53,12 +53,20 @@ const ThemeToggle = ({ className = '' }) => {
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       aria-pressed={isDark}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className={`inline-flex items-center justify-center h-9 w-9 rounded-md border border-border bg-card hover:bg-muted transition-colors ${className}`}
+      className={`group inline-flex items-center justify-center h-9 w-9 rounded-md border border-border bg-card hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
     >
       {isDark ? (
-        <Icon name="Sun" size={18} className="text-foreground" />
+        <Icon
+          name="Sun"
+          size={18}
+          className="text-foreground transition-transform duration-500 ease-out group-hover:rotate-[360deg] group-hover:scale-110"
+        />
       ) : (
-        <Icon name="Moon" size={18} className="text-foreground" />
+        <Icon
+          name="Moon"
+          size={18}
+          className="text-foreground transition-transform duration-500 ease-out group-hover:rotate-[360deg] group-hover:scale-110"
+        />
       )}
     </button>
   );

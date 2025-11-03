@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
 import ThemeToggle from './ThemeToggle';
@@ -24,8 +24,8 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[1000] bg-card border-b border-border">
-      <div className="flex items-center justify-between h-16 px-4 lg:px-6">
+    <header className="fixed top-0 left-0 right-0 z-[1000] border-b border-border bg-card shadow-sm transition-colors supports-[backdrop-filter]:backdrop-blur-md">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 lg:px-8">
         {/* Logo and Brand */}
         <div className="flex items-center space-x-4">
           <Link to="/home-dashboard" className="flex items-center space-x-3">
@@ -46,7 +46,54 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation removed */}
+        {/* Carbon Management Tools Navigation */}
+        <nav className="hidden flex-1 items-center justify-center gap-2 lg:flex">
+          {/* Data Workbench */}
+          <NavLink
+            to="/data-workbench"
+            aria-label="Data Workbench"
+            className={({ isActive }) => `nav-blink nav-blink-delay-0 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+          >
+            <Icon name="Database" size={16} className="transition-colors" aria-hidden="true" />
+            <span>Data Workbench</span>
+          </NavLink>
+          {/* Calculate (Emission Calculator) */}
+          <NavLink
+            to="/emission-calculator"
+            aria-label="Emission Calculator"
+            className={({ isActive }) => `nav-blink nav-blink-delay-1 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+          >
+            <Icon name="Calculator" size={16} className="transition-colors" aria-hidden="true" />
+            <span>Emission Calculator</span>
+          </NavLink>
+          {/* Plan (Afforestation) */}
+          <NavLink
+            to="/afforestation-planner"
+            aria-label="Afforestation"
+            className={({ isActive }) => `nav-blink nav-blink-delay-2 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+          >
+            <Icon name="Leaf" size={16} className="transition-colors" aria-hidden="true" />
+            <span>Afforestation</span>
+          </NavLink>
+          {/* Analyze (Gap Analysis) */}
+          <NavLink
+            to="/carbon-gap-analysis-dashboard"
+            aria-label="Gap Analysis"
+            className={({ isActive }) => `nav-blink nav-blink-delay-3 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+          >
+            <Icon name="TrendingDown" size={16} className="transition-colors" aria-hidden="true" />
+            <span>Gap Analysis</span>
+          </NavLink>
+          {/* Report (Reports) */}
+          <NavLink
+            to="/reports-compliance"
+            aria-label="Reports"
+            className={({ isActive }) => `nav-blink nav-blink-delay-4 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+          >
+            <Icon name="FileText" size={16} className="transition-colors" aria-hidden="true" />
+            <span>Reports</span>
+          </NavLink>
+        </nav>
 
         {/* User Context Panel & Mobile Menu Button */}
         <div className="flex items-center space-x-2">
@@ -155,7 +202,64 @@ const Header = () => {
                     </div>
                   </div>
 
-                  {/* Navigation Items - Mobile removed */}
+                  {/* Carbon Management Tools - Mobile */}
+                  <div className="mb-6">
+                    <h3 className="text-xs font-caption font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-4">
+                      Carbon Management Tools
+                    </h3>
+                    <div className="space-y-2">
+                      {/* Data Workbench */}
+                      <NavLink
+                        to="/data-workbench"
+                        aria-label="Data Workbench"
+                        onClick={toggleMobileMenu}
+                        className={({ isActive }) => `nav-blink nav-blink-delay-0 flex items-center gap-3 rounded-xl px-4 py-3 text-base font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+                      >
+                        <Icon name="Database" size={20} className="transition-colors" aria-hidden="true" />
+                        <span>Data Workbench</span>
+                      </NavLink>
+                      {/* Calculate (Emission Calculator) */}
+                      <NavLink
+                        to="/emission-calculator"
+                        aria-label="Emission Calculator"
+                        onClick={toggleMobileMenu}
+                        className={({ isActive }) => `nav-blink nav-blink-delay-1 flex items-center gap-3 rounded-xl px-4 py-3 text-base font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+                      >
+                        <Icon name="Calculator" size={20} className="transition-colors" aria-hidden="true" />
+                        <span>Emission Calculator</span>
+                      </NavLink>
+                      {/* Plan (Afforestation) */}
+                      <NavLink
+                        to="/afforestation-planner"
+                        aria-label="Afforestation"
+                        onClick={toggleMobileMenu}
+                        className={({ isActive }) => `nav-blink nav-blink-delay-2 flex items-center gap-3 rounded-xl px-4 py-3 text-base font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+                      >
+                        <Icon name="Leaf" size={20} className="transition-colors" aria-hidden="true" />
+                        <span>Afforestation</span>
+                      </NavLink>
+                      {/* Analyze (Gap Analysis) */}
+                      <NavLink
+                        to="/carbon-gap-analysis-dashboard"
+                        aria-label="Gap Analysis"
+                        onClick={toggleMobileMenu}
+                        className={({ isActive }) => `nav-blink nav-blink-delay-3 flex items-center gap-3 rounded-xl px-4 py-3 text-base font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+                      >
+                        <Icon name="TrendingDown" size={20} className="transition-colors" aria-hidden="true" />
+                        <span>Gap Analysis</span>
+                      </NavLink>
+                      {/* Report (Reports) */}
+                      <NavLink
+                        to="/reports-compliance"
+                        aria-label="Reports"
+                        onClick={toggleMobileMenu}
+                        className={({ isActive }) => `nav-blink nav-blink-delay-4 flex items-center gap-3 rounded-xl px-4 py-3 text-base font-body font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isActive ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-accent/40' : 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'}`}
+                      >
+                        <Icon name="FileText" size={20} className="transition-colors" aria-hidden="true" />
+                        <span>Reports</span>
+                      </NavLink>
+                    </div>
+                  </div>
 
                   {/* User Actions - Mobile */}
                   <div className="mt-8 pt-6 border-t border-border space-y-2">
